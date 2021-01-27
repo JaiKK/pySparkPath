@@ -22,19 +22,7 @@ python -m venv venv
 First venv in above command is module name and second is the name of environment to be created.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```powershell
 (base) C:\Users\Aadi>python --version
 
 (base) C:\Users\Aadi>python -m venv --help
@@ -51,3 +39,4 @@ First venv in above command is module name and second is the name of environment
 
 (venv) (base) C:\Users\Aadi\pyspark>deactivate
 (base) C:\Users\Aadi\pyspark>
+```
