@@ -1,0 +1,4 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "pySpark Learning Path"
+theme = "DS-BOOK"

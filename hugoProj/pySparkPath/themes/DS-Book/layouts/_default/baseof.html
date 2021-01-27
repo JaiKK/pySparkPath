@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Page.Language | default " en" }}" class="js csstransforms3d">
+<div class="container">
+    {{- partial "head.html" . -}}
+
+    <body class="" data-url="{{ .RelPermalink }}">
+        {{- partial "header.html" . -}}
+        <div id="content">
+            {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </body>
+</div>
+
+</html>
