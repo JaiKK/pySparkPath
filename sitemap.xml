@@ -3,26 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://jaikk.github.io/pySparkPath/</loc>
     <lastmod>2021-01-27T19:36:53+11:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/venv/</loc>
+    <loc>https://jaikk.github.io/pySparkPath/venv/</loc>
     <lastmod>2021-01-27T19:34:37+11:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/venv/setup/</loc>
+    <loc>https://jaikk.github.io/pySparkPath/venv/setup/</loc>
     <lastmod>2021-01-27T19:32:42+11:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://jaikk.github.io/pySparkPath/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://jaikk.github.io/pySparkPath/tags/</loc>
   </url>
   
 </urlset>

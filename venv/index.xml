@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VENV on pySpark Learning Path</title>
-    <link>http://example.org/venv/</link>
+    <link>https://jaikk.github.io/pySparkPath/venv/</link>
     <description>Recent content in VENV on pySpark Learning Path</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Jan 2021 19:34:37 +1100</lastBuildDate><atom:link href="http://example.org/venv/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jan 2021 19:34:37 +1100</lastBuildDate><atom:link href="https://jaikk.github.io/pySparkPath/venv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup</title>
-      <link>http://example.org/venv/setup/</link>
+      <link>https://jaikk.github.io/pySparkPath/venv/setup/</link>
       <pubDate>Wed, 27 Jan 2021 19:32:42 +1100</pubDate>
       
-      <guid>http://example.org/venv/setup/</guid>
+      <guid>https://jaikk.github.io/pySparkPath/venv/setup/</guid>
       <description>python -m venv &amp;lt;name&amp;gt; </description>
     </item>
     
