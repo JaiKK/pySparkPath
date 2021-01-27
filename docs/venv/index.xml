@@ -13,7 +13,15 @@
       <pubDate>Wed, 27 Jan 2021 19:32:42 +1100</pubDate>
       
       <guid>https://jaikk.github.io/pySparkPath/venv/setup/</guid>
-      <description>python -m venv &amp;lt;name&amp;gt; </description>
+      <description>Reference video: https://www.youtube.com/watch?v=APOPm01BVrk
+Reference document: https://docs.python.org/3/library/venv.html
+Command: python -m venv By convention its good to create virtual environment with name of &amp;ldquo;venv&amp;rdquo;. This we can add in gitignore file as well.
+python -m venv venv First venv in above command is module name and second is the name of environment to be created.
+(base) C:\Users\Aadi&amp;gt;python &amp;ndash;version
+(base) C:\Users\Aadi&amp;gt;python -m venv &amp;ndash;help
+(base) C:\Users\Aadi&amp;gt;mkdir pyspark
+(base) C:\Users\Aadi&amp;gt;cd pyspark
+(base) C:\Users\Aadi\pyspark&amp;gt;python -m venv venv</description>
     </item>
     
   </channel>
