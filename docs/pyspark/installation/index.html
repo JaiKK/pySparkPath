@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+<div class="container"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.80.0" />
+<title>Installation :: pySpark Learning Path</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"><body class="" data-url="/pySparkPath/pyspark/installation/"><div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="https://jaikk.github.io/pySparkPath/">JotDown</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="https://jaikk.github.io/pySparkPath/">Home</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <header class="homepage-header">
+    
+      
+      
+      <h1 class="display-1">pySpark</h1>
+        
+  </header>
+</div><div id="content">
+<main>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-3">
+
+                <div class="list-group">
+                    
+                    <h4> Installation</h4> <br />
+                    These instruction will work in Docker and standalone system.
+                    
+                </div>
+            </div>
+
+            <div class="col-9">
+                <aside>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#details">Details</a>
+      <ul>
+        <li><a href="#link-to-installer-file-spark-301-bin-hadoop27tgzhttpswwwstrategylionscomaumirrorsparkspark-301spark-301-bin-hadoop27tgz">Link to installer file: <a href="https://www.strategylions.com.au/mirror/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz">spark-3.0.1-bin-hadoop2.7.tgz</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#use-below-command-to-create-are-docker-image-from-dockerfile">Use below command to create are Docker image from Dockerfile</a></li>
+    <li><a href="#use-below-command-to-run-docker-container">Use below command to run Docker container</a></li>
+  </ul>
+</nav>
+                </aside>
+                <Hr />
+
+                <h2 id="details">Details</h2>
+<p>This installation method will cover installation of Spark in local system (Linux) and docker container. I have attached Dockerfile with this tutorial and explained each line and its purpose.</p>
+<p>I have used Ubuntu for this tutorial but you can choose any linux distribution. Windows I&rsquo;ll cover is separate tutorial.</p>
+<p>In this tutorial I have downloaded the spark installer (compressed file) for convenience. But I&rsquo;ll also add commands to download it directly from server while installation.</p>
+<h3 id="link-to-installer-file-spark-301-bin-hadoop27tgzhttpswwwstrategylionscomaumirrorsparkspark-301spark-301-bin-hadoop27tgz">Link to installer file: <a href="https://www.strategylions.com.au/mirror/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz">spark-3.0.1-bin-hadoop2.7.tgz</a></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below line is to define the base image for installation</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:20.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below line is to define maintainer label</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> maintainer<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jai@email.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will copy downloaded spark file to container. </span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># This file should be placed next to Dockerfile.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> spark-3.0.1-bin-hadoop2.7.tgz /home<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will update packages information of Ubuntu from all added repositories</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cd /home <span style="color:#f92672">&amp;&amp;</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will install jdk 8 which is a dependency for Spark.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get -y install openjdk-8-jdk<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will install python and pip. Which are required for pySpark and Jupyter notebook.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># We also update the alternatives to access python and pip easy names rather than using there names with version numbers.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># By default &#34;python3.8&#34; and &#34;pip3&#34; named executables will be installed.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cd /home <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get -y install python3.8 <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    update-alternatives --install /usr/bin/python python /usr/bin/python3.8 <span style="color:#ae81ff">10</span> <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get -y install python3-pip  <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 <span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will extract spark files from tar file and keep in it /opt/spark directory.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># We could have created a link for this folder, which way we could have installed multiple versions on Spark.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># This command will also install Jupyter, to use Notebook for PySpark.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># This will also install findspark module which will connect to local instance of Spark from Notebook.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cd /home <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    tar -xzf spark-3.0.1-bin-hadoop2.7.tgz <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    mv spark-3.0.1-bin-hadoop2.7 /opt/spark <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    pip install jupyter <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    pip install findspark<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below command will delete the installer file are this is no longer required.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cd /home <span style="color:#f92672">&amp;&amp;</span> rm spark-3.0.1-bin-hadoop2.7.tgz<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Below commands will setup environment variables.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># JAVA_HOME is as usual for java as Spark&#39;s dependency</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># SPARK_HOME also important for findspark module when we&#39;ll try to find local runing instance.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># PYSPARK_DRIVER_PYTHON and PYSPARK_DRIVER_PYTHON_OPTS will be required for Jupyter Notebook.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># PYSPARK_DRIVER_PYTHON_OPTS port and ip options are important for this command to expose webUI out of container</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH $PATH:$JAVA_HOME/bin<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> SPARK_HOME /opt/spark<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH $SPARK_HOME/bin:$PATH<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYSPARK_DRIVER_PYTHON <span style="color:#e6db74">&#39;jupyter&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYSPARK_DRIVER_PYTHON_OPTS <span style="color:#e6db74">&#39;notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose 4040 port for Spark WebUI</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 4040</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose 8888 for Jupyter Notebook</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8888</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h2 id="use-below-command-to-create-are-docker-image-from-dockerfile">Use below command to create are Docker image from Dockerfile</h2>
+<blockquote>
+<p>Make sure downloaded Spark installer is next to Dockerfile</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">docker build -t jai/pyspark .
+</code></pre></div><h2 id="use-below-command-to-run-docker-container">Use below command to run Docker container</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">docker run -dit -p4040<span style="color:#960050;background-color:#1e0010">:</span>4040 -p8888<span style="color:#960050;background-color:#1e0010">:</span>8888 jai/pyspark bash
+</code></pre></div><blockquote>
+<p>After logging on container you can run below commands</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; spark-shell
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; spark-submit
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; pyspark
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; spark-sql
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sparkR
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; spark-class
+</code></pre></div><p>Below is to test Spark installation and test check examples</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; /opt/spark/bin/run-example run-example SparkPi <span style="color:#ae81ff">10</span>
+</code></pre></div><p>Below is to interact with HiveServer2 client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; beeline
+</code></pre></div><p>To start Jupyter notebook server use below command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; jupyter notebook --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span> --no-browser --ip<span style="color:#f92672">=</span>0.0.0.0 --allow-root
+</code></pre></div><p>To start interactive bash shell</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; docker run -dit -p4041:4040 jai/pyspark bash
+</code></pre></div>
+                <Hr />
+                        <div class="row">
+                            <div class="col">
+                                
+                            </div>
+                            <div class="col-auto">
+                                
+                                
+                                <a href="https://jaikk.github.io/pySparkPath/pyspark/install/"> Install </a>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        <Hr />
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center pagination-lg">
+                                
+                                
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/install/">Install</a>
+                                    </li>
+                                    
+                                
+                            </ul>
+                          </nav>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</main>
+
+        </div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script></body>
+</div>
+
+</html>

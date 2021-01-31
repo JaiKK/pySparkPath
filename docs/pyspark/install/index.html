@@ -3,9 +3,9 @@
 <div class="container"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Hugo 0.80.0" />
-<title>Setup :: pySpark Learning Path</title>
+<title>Install :: pySpark Learning Path</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"><body class="" data-url="/pySparkPath/venv/setup/"><div class="container">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"><body class="" data-url="/pySparkPath/pyspark/install/"><div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -33,7 +33,7 @@
     
       
       
-      <h1 class="display-1">VENV</h1>
+      <h1 class="display-1">pySpark</h1>
         
   </header>
 </div><div id="content">
@@ -46,8 +46,8 @@
 
                 <div class="list-group">
                     
-                    <h4> Setup</h4> <br />
-                    How to setup VENV in python for virtual environment.
+                    <h4> Install (pip method)</h4> <br />
+                    Installation instruction for pySpark.
                     
                 </div>
             </div>
@@ -58,38 +58,42 @@
                 </aside>
                 <Hr />
 
-                <p>Reference video: <a href="https://www.youtube.com/watch?v=APOPm01BVrk">https://www.youtube.com/watch?v=APOPm01BVrk</a></p>
-<p>Reference document: <a href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a></p>
-<p>Command: python -m venv <!-- raw HTML omitted --></p>
-<p>By convention its good to create virtual environment with name of &ldquo;venv&rdquo;. This we can add in gitignore file as well.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python <span style="color:#f92672">-</span>m venv venv 
-</code></pre></div><p>First venv in above command is module name and second is the name of environment to be created.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">(base) C:\Users\Aadi&gt;python --version
+                <p>Create a folder named &ldquo;pySpark&rdquo;.
+Create a virtual environment &ldquo;venv&rdquo; in &ldquo;pySpark&rdquo; folder</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">(base) C:\Users\Aadi\pyspark&gt;.\venv\Scripts\activate.bat
 
-(base) C:\Users\Aadi&gt;python -m venv --help
-
-(base) C:\Users\Aadi&gt;mkdir pyspark
-
-(base) C:\Users\Aadi&gt;cd pyspark
-
-(base) C:\Users\Aadi\pyspark&gt;python -m venv venv
+(venv) (base) C:\Users\Aadi\pyspark&gt;pip install pyspark
 
 (base) C:\Users\Aadi\pyspark&gt;.\venv\Scripts\activate.bat
 
-(venv) (base) C:\Users\Aadi\pyspark&gt;
-
-(venv) (base) C:\Users\Aadi\pyspark&gt;deactivate
-(base) C:\Users\Aadi\pyspark&gt;
-</code></pre></div>
+(venv) (base) C:\Users\Aadi\pyspark&gt;pip --version
+pip 20.1.1 from c:\users\aadi\pyspark\venv\lib\site-packages\pip (python 3.8)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">(venv) (base) C:\Users\Aadi\pyspark&gt;pip install pyspark
+</code></pre></div><pre><code>Collecting pyspark 
+ Using cached pyspark-3.0.1.tar.gz (204.2 MB) 
+Collecting py4j==0.10.9 
+  Using cached py4j-0.10.9-py2.py3-none-any.whl (198 kB) 
+Using legacy setup.py install for pyspark, since package 'wheel' is not installed. 
+Installing collected packages: py4j, pyspark 
+    Running setup.py install for pyspark ... done 
+Successfully installed py4j-0.10.9 pyspark-3.0.1 
+WARNING: You are using pip version 20.1.1; however, version 21.0 is available. 
+You should consider upgrading via the 'c:\users\aadi\pyspark\venv\scripts\python.exe -m pip install --upgrade pip' command. 
+</code></pre>
                 <Hr />
                         <div class="row">
                             <div class="col">
                                 
                                     
+                                    <a href="https://jaikk.github.io/pySparkPath/pyspark/installation/"> Installation </a>
+                                    
                                 
                                 
                             </div>
                             <div class="col-auto">
+                                
+                                
+                                
                                 
                             </div>
                         </div>
@@ -98,7 +102,13 @@
                             <ul class="pagination justify-content-center pagination-lg">
                                 
                                     
+                                    <li class="page-item">
+                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/installation/" tabindex="-1" aria-disabled="true">Installation</a>
+                                    </li>
+                                    
                                 
+                                
+                                    
                                 
                             </ul>
                           </nav>
