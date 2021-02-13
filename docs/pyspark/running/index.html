@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+<div class="container"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.80.0" />
+<title>Running :: pySpark Learning Path</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<style>
+
+#booklink{
+    color:#000000 !important;
+    text-decoration:none;
+    cursor:pointer; 
+}
+
+
+.highlight > pre {
+    padding-left: 1rem;
+}
+
+.homepage-header {
+    margin-bottom: 1.6rem;
+}
+
+#TableOfContents, #leftsidebar {
+    background-color:#f8f9fa!important;
+}
+
+#TableOfContents a {
+    color: black;    
+    text-decoration:none;
+    cursor:pointer; 
+}
+
+.h2, h2 {
+    font-size: calc(1rem + .9vw);
+    margin-top: 2rem;
+}
+
+.h3, h3 {
+    font-size: calc(1rem + .6vw);
+    margin-top: 2rem;
+}
+</style><body class="" data-url="/pySparkPath/pyspark/running/"><div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="https://jaikk.github.io/pySparkPath/">JotDown</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="https://jaikk.github.io/pySparkPath/">Home</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <header class="homepage-header">
+    
+      
+      
+      <a id="booklink" class="display-4" href="../">pySpark</a>
+        
+  </header>
+</div><div id="content">
+<main>
+
+    <div class="container">
+
+        <div class="row">
+            <div id="leftsidebar" class="col-3">
+
+                <div class="list-group">
+                    
+                    <h4> 2. Running</h4> <br />
+                    This page will guide you to the steps for running Docker container (With Image we built in previous tutorial)
+                    
+                </div>
+            </div>
+
+            <div class="col-9">
+                <aside>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#use-below-command-to-run-docker-container">Use below command to run Docker container</a></li>
+  </ul>
+</nav>
+                </aside>
+                <Hr />
+
+                <h2 id="use-below-command-to-run-docker-container">Use below command to run Docker container</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
+$&gt; docker run -dit -p4040<span style="color:#960050;background-color:#1e0010">:</span>4040 -p8888<span style="color:#960050;background-color:#1e0010">:</span>8888 jai/pyspark bash
+
+</code></pre></div><blockquote>
+<p>After logging on container you can run below commands</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; spark-shell
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; spark-submit
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; pyspark
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; spark-sql
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; sparkR
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; spark-class
+
+</code></pre></div><p>Below is to test Spark installation and test check examples</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; /opt/spark/bin/run-example run-example SparkPi <span style="color:#ae81ff">10</span>
+
+</code></pre></div><p>Below is to interact with HiveServer2 client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; beeline
+
+</code></pre></div><p>To start Jupyter notebook server use below command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; jupyter notebook --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span> --no-browser --ip<span style="color:#f92672">=</span>0.0.0.0 --allow-root
+
+</code></pre></div><p>To start interactive bash shell</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; docker run -dit -p4040:4040 jai/pyspark bash
+
+</code></pre></div>
+                <Hr />
+                        <div class="row">
+                            <div class="col">
+                                
+                                    
+                                    <a href="https://jaikk.github.io/pySparkPath/pyspark/installation/"> Installation </a>
+                                    
+                                
+                                
+                            </div>
+                            <div class="col-auto">
+                                
+                                
+                                <a href="https://jaikk.github.io/pySparkPath/pyspark/install/"> Install </a>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        <Hr />
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center pagination-lg">
+                                
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/installation/" tabindex="-1" aria-disabled="true">Installation</a>
+                                    </li>
+                                    
+                                
+                                
+                                    
+                                    <li class="page-item">
+                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/install/">Install</a>
+                                    </li>
+                                    
+                                
+                            </ul>
+                          </nav>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</main>
+
+        </div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script></body>
+</div>
+
+</html>

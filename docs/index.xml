@@ -13,9 +13,21 @@
       <pubDate>Sun, 31 Jan 2021 23:33:26 +1100</pubDate>
       
       <guid>https://jaikk.github.io/pySparkPath/pyspark/installation/</guid>
-      <description>Details This installation method will cover installation of Spark in local system (Linux) and docker container. I have attached Dockerfile with this tutorial and explained each line and its purpose.
+      <description>Create Dockerfile This installation method will cover installation of Spark in local system (Linux) and docker container. I have attached Dockerfile with this tutorial and explained each line and its purpose.
 I have used Ubuntu for this tutorial but you can choose any linux distribution. Windows I&amp;rsquo;ll cover is separate tutorial.
 In this tutorial I have downloaded the spark installer (compressed file) for convenience. But I&amp;rsquo;ll also add commands to download it directly from server while installation.</description>
+    </item>
+    
+    <item>
+      <title>Running</title>
+      <link>https://jaikk.github.io/pySparkPath/pyspark/running/</link>
+      <pubDate>Sun, 14 Feb 2021 08:44:28 +1100</pubDate>
+      
+      <guid>https://jaikk.github.io/pySparkPath/pyspark/running/</guid>
+      <description>Use below command to run Docker container $&amp;gt; docker run -dit -p4040:4040 -p8888:8888 jai/pyspark bash  After logging on container you can run below commands
+ $&amp;gt; spark-shell $&amp;gt; spark-submit $&amp;gt; pyspark $&amp;gt; spark-sql $&amp;gt; sparkR $&amp;gt; spark-class Below is to test Spark installation and test check examples
+$&amp;gt; /opt/spark/bin/run-example run-example SparkPi 10 Below is to interact with HiveServer2 client.
+$&amp;gt; beeline To start Jupyter notebook server use below command</description>
     </item>
     
     <item>

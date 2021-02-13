@@ -15,28 +15,34 @@
     cursor:pointer; 
 }
 
-code {
-    margin-left: 1rem;
-     
-}
 
- 
-} */
+.highlight > pre {
+    padding-left: 1rem;
+}
 
 .homepage-header {
     margin-bottom: 1.6rem;
 }
 
-#TableOfContents {
-     
+#TableOfContents, #leftsidebar {
     background-color:#f8f9fa!important;
 }
+
 #TableOfContents a {
     color: black;    
     text-decoration:none;
     cursor:pointer; 
 }
 
+.h2, h2 {
+    font-size: calc(1rem + .9vw);
+    margin-top: 2rem;
+}
+
+.h3, h3 {
+    font-size: calc(1rem + .6vw);
+    margin-top: 2rem;
+}
 </style><body class="" data-url="/pySparkPath/pyspark/installation/"><div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,12 +80,12 @@ code {
     <div class="container">
 
         <div class="row">
-            <div class="col-3">
+            <div id="leftsidebar" class="col-3">
 
                 <div class="list-group">
                     
-                    <h4> Installation</h4> <br />
-                    These instruction will work in Docker and standalone system.
+                    <h4> 1. Installation</h4> <br />
+                    These instruction will guide you to create a Docker image for Spark standalone system. This docker image will be used for all further tutorials.
                     
                 </div>
             </div>
@@ -88,19 +94,18 @@ code {
                 <aside>
                     <nav id="TableOfContents">
   <ul>
-    <li><a href="#details">Details</a>
+    <li><a href="#create-dockerfile">Create Dockerfile</a>
       <ul>
         <li><a href="#link-to-installer-file-spark-301-bin-hadoop27tgzhttpswwwstrategylionscomaumirrorsparkspark-301spark-301-bin-hadoop27tgz">Link to installer file: <a href="https://www.strategylions.com.au/mirror/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz">spark-3.0.1-bin-hadoop2.7.tgz</a></a></li>
       </ul>
     </li>
-    <li><a href="#use-below-command-to-create-are-docker-image-from-dockerfile">Use below command to create are Docker image from Dockerfile</a></li>
-    <li><a href="#use-below-command-to-run-docker-container">Use below command to run Docker container</a></li>
+    <li><a href="#create-docker-image-from-dockerfile">Create Docker image from Dockerfile</a></li>
   </ul>
 </nav>
                 </aside>
                 <Hr />
 
-                <h2 id="details">Details</h2>
+                <h2 id="create-dockerfile">Create Dockerfile</h2>
 <p>This installation method will cover installation of Spark in local system (Linux) and docker container. I have attached Dockerfile with this tutorial and explained each line and its purpose.</p>
 <p>I have used Ubuntu for this tutorial but you can choose any linux distribution. Windows I&rsquo;ll cover is separate tutorial.</p>
 <p>In this tutorial I have downloaded the spark installer (compressed file) for convenience. But I&rsquo;ll also add commands to download it directly from server while installation.</p>
@@ -178,57 +183,22 @@ code {
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 18080</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose 8080 for Spark MASTER web-UI</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose 8081 for Spark Slave web-UI</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8081</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose 7077 for Spark MASTER server</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 7077</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h2 id="use-below-command-to-create-are-docker-image-from-dockerfile">Use below command to create are Docker image from Dockerfile</h2>
-<blockquote>
-<p>Make sure downloaded Spark installer is next to Dockerfile</p>
-</blockquote>
+</span></code></pre></div><h2 id="create-docker-image-from-dockerfile">Create Docker image from Dockerfile</h2>
+<p>Use below command to create are Docker image from Dockerfile. <em>Make sure downloaded Spark installer is next to Dockerfile</em>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
 docker build -t jai/pyspark .
-
-</code></pre></div><h2 id="use-below-command-to-run-docker-container">Use below command to run Docker container</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
-$&gt; docker run -dit -p4040<span style="color:#960050;background-color:#1e0010">:</span>4040 -p8888<span style="color:#960050;background-color:#1e0010">:</span>8888 jai/pyspark bash
-
-</code></pre></div><blockquote>
-<p>After logging on container you can run below commands</p>
-</blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; spark-shell
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; spark-submit
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; pyspark
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; spark-sql
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; sparkR
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; spark-class
-
-</code></pre></div><p>Below is to test Spark installation and test check examples</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; /opt/spark/bin/run-example run-example SparkPi <span style="color:#ae81ff">10</span>
-
-</code></pre></div><p>Below is to interact with HiveServer2 client.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; beeline
-
-</code></pre></div><p>To start Jupyter notebook server use below command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; jupyter notebook --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span> --no-browser --ip<span style="color:#f92672">=</span>0.0.0.0 --allow-root
-
-</code></pre></div><p>To start interactive bash shell</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; docker run -dit -p4040:4040 jai/pyspark bash
 
 </code></pre></div>
                 <Hr />
@@ -239,7 +209,7 @@ $&gt; docker run -dit -p4040:4040 jai/pyspark bash
                             <div class="col-auto">
                                 
                                 
-                                <a href="https://jaikk.github.io/pySparkPath/pyspark/install/"> Install </a>
+                                <a href="https://jaikk.github.io/pySparkPath/pyspark/running/"> Running </a>
                                 
                                 
                                 
@@ -252,7 +222,7 @@ $&gt; docker run -dit -p4040:4040 jai/pyspark bash
                                 
                                     
                                     <li class="page-item">
-                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/install/">Install</a>
+                                        <a class="page-link" href="https://jaikk.github.io/pySparkPath/pyspark/running/">Running</a>
                                     </li>
                                     
                                 
