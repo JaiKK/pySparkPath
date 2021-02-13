@@ -11,3 +11,9 @@ hugo --cleanDestinationDir
 
 ### **Use below command for generating static pages**
 hugo -D -E -F
+
+
+future Tailswind CSS
+https://play.tailwindcss.com/IbbAsiOYRh
+
+https://play.tailwindcss.com/aRzBvJtDSL
