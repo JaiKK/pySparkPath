@@ -4,11 +4,12 @@ date: 2021-01-31T23:33:26+11:00
 draft: true
 
 booktitle: "pySpark"
-linkname: "Installation"
-shortdesc: "These instruction will work in Docker and standalone system."
+linkname: "1. Installation"
+shortdesc: "These instruction will guide you to create a Docker image for Spark standalone system. This docker image will be used for all further tutorials."
+Weight: 1
 ---
 
-## Details
+## Create Dockerfile
 This installation method will cover installation of Spark in local system (Linux) and docker container. I have attached Dockerfile with this tutorial and explained each line and its purpose.
 
 I have used Ubuntu for this tutorial but you can choose any linux distribution. Windows I'll cover is separate tutorial.
@@ -92,82 +93,29 @@ EXPOSE 8888
 
 EXPOSE 18080
 
+# Expose 8080 for Spark MASTER web-UI
+
 EXPOSE 8080
+
+# Expose 8081 for Spark Slave web-UI
+
 EXPOSE 8081
+
+# Expose 7077 for Spark MASTER server
+
 EXPOSE 7077
 
 ```
 
 
-## Use below command to create are Docker image from Dockerfile
-> Make sure downloaded Spark installer is next to Dockerfile
+
+
+## Create Docker image from Dockerfile
+
+Use below command to create are Docker image from Dockerfile. *Make sure downloaded Spark installer is next to Dockerfile*.
+
 ```powershell
 
 docker build -t jai/pyspark .
-
-```
-
-## Use below command to run Docker container
-```powershell
-
-$> docker run -dit -p4040:4040 -p8888:8888 jai/pyspark bash
-
-```
-> After logging on container you can run below commands
-```bash
-
-$> spark-shell
-
-```
-```bash
-
-$> spark-submit
-
-```
-```bash
-
-$> pyspark
-
-```
-```bash
-
-$> spark-sql
-
-```
-```bash
-
-$> sparkR
-
-```
-```bash
-
-$> spark-class
-
-```
-
-Below is to test Spark installation and test check examples
-```bash
-
-$> /opt/spark/bin/run-example run-example SparkPi 10
-
-```
-Below is to interact with HiveServer2 client.
-```bash
-
-$> beeline
-
-```
-
-To start Jupyter notebook server use below command
-```bash
-
-$> jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
-
-```
-
-To start interactive bash shell
-```bash
-
-$> docker run -dit -p4040:4040 jai/pyspark bash
 
 ```
