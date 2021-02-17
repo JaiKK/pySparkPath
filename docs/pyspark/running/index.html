@@ -43,6 +43,16 @@
     font-size: calc(1rem + .6vw);
     margin-top: 2rem;
 }
+
+blockquote {
+    color: gray;
+    background-color: #f8f9fa;
+    margin: 2rem 1rem;
+    border-style: none none none solid;
+    border-width: .1rem;
+    border-color: darkslateblue;
+}
+
 </style><body class="" data-url="/pySparkPath/pyspark/running/"><div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -92,54 +102,154 @@
 
             <div class="col-9">
                 <aside>
-                    <nav id="TableOfContents">
+                    
+                        <h3>Table of Contents</h3>
+                        <nav id="TableOfContents">
   <ul>
     <li><a href="#use-below-command-to-run-docker-container">Use below command to run Docker container</a></li>
   </ul>
 </nav>
+                                        
                 </aside>
                 <Hr />
 
-                <h2 id="use-below-command-to-run-docker-container">Use below command to run Docker container</h2>
+                <p>After installation its time to test our Spark installation. we&rsquo;ll test in below order:</p>
+<ol>
+<li>Notebook</li>
+<li>SHELL</li>
+<li>Cluster</li>
+</ol>
+<h2 id="use-below-command-to-run-docker-container">Use below command to run Docker container</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
-$&gt; docker run -dit -p4040<span style="color:#960050;background-color:#1e0010">:</span>4040 -p8888<span style="color:#960050;background-color:#1e0010">:</span>8888 jai/pyspark bash
+C:\&gt; docker run -dit -p4040<span style="color:#960050;background-color:#1e0010">:</span>4040 -p8888<span style="color:#960050;background-color:#1e0010">:</span>8888 -p18080<span style="color:#960050;background-color:#1e0010">:</span>18080 -p8080<span style="color:#960050;background-color:#1e0010">:</span>8080 -p8081<span style="color:#960050;background-color:#1e0010">:</span>8081 -p7077<span style="color:#960050;background-color:#1e0010">:</span>7077 --name pySparkCluster --hostname pySparkCluster jai/pyspark bash
+
+</code></pre></div><p>Pay attention that we have mapped all port to localhost and defined container hostname to &lsquo;pySparkCluster&rsquo;. This is important mainly to manage URL&rsquo;s as by default they have IP address. With this hostname set we&rsquo;ll update our local host file to map this hostname to localhost.</p>
+<blockquote>
+<p>Update file <em><strong>&ldquo;c:\Windows\System32\drivers\etc\hosts&rdquo;</strong></em> and add below line at the end of the file.</p>
+</blockquote>
+<hr>
+<pre><code>127.0.0.1 pySparkCluster
+</code></pre><hr>
+<blockquote>
+<p>Now logon to container, using below command.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
+C:\&gt; docker attach pySparkCluster
 
 </code></pre></div><blockquote>
-<p>After logging on container you can run below commands</p>
+<p>After logging on container check few essential things, run printenv command and check specially &ldquo;PYSPARK_DRIVER_PYTHON&rdquo; and &ldquo;PYSPARK_DRIVER_PYTHON_OPTS&rdquo; variables are set.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; printenv
+PYSPARK_DRIVER_PYTHON<span style="color:#f92672">=</span>jupyter
+HOSTNAME<span style="color:#f92672">=</span>pySparkCluster
+HOME<span style="color:#f92672">=</span>/root
+TERM<span style="color:#f92672">=</span>xterm
+PATH<span style="color:#f92672">=</span>/opt/spark/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-8-openjdk-amd64/bin
+JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-8-openjdk-amd64
+PYSPARK_DRIVER_PYTHON_OPTS<span style="color:#f92672">=</span>notebook --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span> --no-browser --ip<span style="color:#f92672">=</span>0.0.0.0 --allow-root
+PWD<span style="color:#f92672">=</span>/
+SPARK_HOME<span style="color:#f92672">=</span>/opt/spark
+
+</code></pre></div><blockquote>
+<p>If &ldquo;PYSPARK_DRIVER_PYTHON&rdquo; environment is set and you run pyspark it&rsquo;ll run on Jupyter notebook else if these variables are not set then pyspark will run on IPython shell. We&rsquo;ll test both. Run below command and open the received URL (with hostname <strong>pySparkCluster</strong> for convenience) in browser. Check chapters for Notebooks for connections and testing pyspark code in Notebook.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; pyspark
+
+<span style="color:#f92672">[</span>I 12:00:34.370 NotebookApp<span style="color:#f92672">]</span> Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+<span style="color:#f92672">[</span>I 12:00:37.699 NotebookApp<span style="color:#f92672">]</span> Serving notebooks from local directory: /
+<span style="color:#f92672">[</span>I 12:00:37.699 NotebookApp<span style="color:#f92672">]</span> Jupyter Notebook 6.2.0 is running at:
+<span style="color:#f92672">[</span>I 12:00:37.699 NotebookApp<span style="color:#f92672">]</span> http://pySparkCluster:8888/?token<span style="color:#f92672">=</span>8db6ca8fb458ad6e926f9fdfa9fe4f2b72dac4f84c1bc77a
+<span style="color:#f92672">[</span>I 12:00:37.699 NotebookApp<span style="color:#f92672">]</span>  or http://127.0.0.1:8888/?token<span style="color:#f92672">=</span>8db6ca8fb458ad6e926f9fdfa9fe4f2b72dac4f84c1bc77a
+<span style="color:#f92672">[</span>I 12:00:37.700 NotebookApp<span style="color:#f92672">]</span> Use Control-C to stop this server and shut down all kernels <span style="color:#f92672">(</span>twice to skip confirmation<span style="color:#f92672">)</span>.
+<span style="color:#f92672">[</span>C 12:00:37.719 NotebookApp<span style="color:#f92672">]</span>
+
+    To access the notebook, open this file in a browser:
+        file:///root/.local/share/jupyter/runtime/nbserver-204-open.html
+    Or copy and paste one of these URLs:
+        http://pySparkCluster:8888/?token<span style="color:#f92672">=</span>8db6ca8fb458ad6e926f9fdfa9fe4f2b72dac4f84c1bc77a
+     or http://127.0.0.1:8888/?token<span style="color:#f92672">=</span>8db6ca8fb458ad6e926f9fdfa9fe4f2b72dac4f84c1bc77a
+</code></pre></div><blockquote>
+<p>To test pyspark shell in IPython make sure &ldquo;PYSPARK_DRIVER_PYTHON&rdquo; and &ldquo;PYSPARK_DRIVER_PYTHON_OPTS&rdquo; environment variables are not set. Use <code>unset</code> command to unset environment variables and run pyspark.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; unset PYSPARK_DRIVER_PYTHON
+$&gt; unset PYSPARK_DRIVER_PYTHON_OPTS
+
+$&gt; pyspark
+
+Python 3.8.5 <span style="color:#f92672">(</span>default, Jul <span style="color:#ae81ff">28</span> 2020, 12:59:40<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>GCC 9.3.0<span style="color:#f92672">]</span> on linux
+Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> or <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information.
+21/02/17 12:09:33 WARN NativeCodeLoader: Unable to load native-hadoop library <span style="color:#66d9ef">for</span> your platform... using builtin-java classes where applicable
+Using Spark<span style="color:#e6db74">&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties
+</span><span style="color:#e6db74">Setting default log level to &#34;WARN&#34;.
+</span><span style="color:#e6db74">To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+</span><span style="color:#e6db74">Welcome to
+</span><span style="color:#e6db74">      ____              __
+</span><span style="color:#e6db74">     / __/__  ___ _____/ /__
+</span><span style="color:#e6db74">    _\ \/ _ \/ _ `/ __/  &#39;</span>_/
+   /__ / .__/<span style="color:#ae81ff">\_</span>,_/_/ /_/<span style="color:#ae81ff">\_\ </span>  version 3.0.1
+      /_/
+
+Using Python version 3.8.5 <span style="color:#f92672">(</span>default, Jul <span style="color:#ae81ff">28</span> <span style="color:#ae81ff">2020</span> 12:59:40<span style="color:#f92672">)</span>
+SparkSession available as <span style="color:#e6db74">&#39;spark&#39;</span>.
+&gt;&gt;&gt;
+
+
+</code></pre></div><blockquote>
+<p>Hint: Use quit() to quit from pyspark shell</p>
+</blockquote>
+<blockquote>
+<p>To test Scala shell run below command.</p>
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; spark-shell
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><blockquote>
+<p>Hint: Use :quit to quit from scala spark shell and :help for more details</p>
+</blockquote>
+<blockquote>
+<p>((Need to update below for program submission on cluster ))</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; spark-submit
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; pyspark
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><blockquote>
+<p>((Need to update below for SQL context ))</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; spark-sql
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><blockquote>
+<p>((Need to update below for R support ))</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; sparkR
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><blockquote>
+<p>((Need to update below  ))</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; spark-class
 
-</code></pre></div><p>Below is to test Spark installation and test check examples</p>
+</code></pre></div><blockquote>
+<p>Below is to test Spark installation and test check examples</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; /opt/spark/bin/run-example run-example SparkPi <span style="color:#ae81ff">10</span>
 
-</code></pre></div><p>Below is to interact with HiveServer2 client.</p>
+</code></pre></div><blockquote>
+<p>Below is to interact with HiveServer2 client.</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; beeline
 
-</code></pre></div><p>To start Jupyter notebook server use below command</p>
+</code></pre></div><blockquote>
+<p>To start Jupyter notebook server with pyspark context use below command (In this method you have to create the spark context manually in Notebook)</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $&gt; jupyter notebook --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span> --no-browser --ip<span style="color:#f92672">=</span>0.0.0.0 --allow-root
-
-</code></pre></div><p>To start interactive bash shell</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-$&gt; docker run -dit -p4040:4040 jai/pyspark bash
 
 </code></pre></div>
                 <Hr />

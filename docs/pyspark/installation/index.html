@@ -43,6 +43,16 @@
     font-size: calc(1rem + .6vw);
     margin-top: 2rem;
 }
+
+blockquote {
+    color: gray;
+    background-color: #f8f9fa;
+    margin: 2rem 1rem;
+    border-style: none none none solid;
+    border-width: .1rem;
+    border-color: darkslateblue;
+}
+
 </style><body class="" data-url="/pySparkPath/pyspark/installation/"><div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -92,7 +102,9 @@
 
             <div class="col-9">
                 <aside>
-                    <nav id="TableOfContents">
+                    
+                        <h3>Table of Contents</h3>
+                        <nav id="TableOfContents">
   <ul>
     <li><a href="#create-dockerfile">Create Dockerfile</a>
       <ul>
@@ -102,6 +114,7 @@
     <li><a href="#create-docker-image-from-dockerfile">Create Docker image from Dockerfile</a></li>
   </ul>
 </nav>
+                                        
                 </aside>
                 <Hr />
 
@@ -199,6 +212,12 @@
 <p>Use below command to create are Docker image from Dockerfile. <em>Make sure downloaded Spark installer is next to Dockerfile</em>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
 docker build -t jai/pyspark .
+
+</code></pre></div><blockquote>
+<p>To start interactive bash shell</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+$&gt; docker run -dit -p4040:4040 jai/pyspark bash
 
 </code></pre></div>
                 <Hr />

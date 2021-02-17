@@ -24,10 +24,8 @@ In this tutorial I have downloaded the spark installer (compressed file) for con
       <pubDate>Sun, 14 Feb 2021 08:44:28 +1100</pubDate>
       
       <guid>https://jaikk.github.io/pySparkPath/pyspark/running/</guid>
-      <description>Use below command to run Docker container $&amp;gt; docker run -dit -p4040:4040 -p8888:8888 jai/pyspark bash  After logging on container you can run below commands
- $&amp;gt; spark-shell $&amp;gt; spark-submit $&amp;gt; pyspark $&amp;gt; spark-sql $&amp;gt; sparkR $&amp;gt; spark-class Below is to test Spark installation and test check examples
-$&amp;gt; /opt/spark/bin/run-example run-example SparkPi 10 Below is to interact with HiveServer2 client.
-$&amp;gt; beeline To start Jupyter notebook server use below command</description>
+      <description>After installation its time to test our Spark installation. we&amp;rsquo;ll test in below order:
+ Notebook SHELL Cluster  Use below command to run Docker container C:\&amp;gt; docker run -dit -p4040:4040 -p8888:8888 -p18080:18080 -p8080:8080 -p8081:8081 -p7077:7077 --name pySparkCluster --hostname pySparkCluster jai/pyspark bash Pay attention that we have mapped all port to localhost and defined container hostname to &amp;lsquo;pySparkCluster&amp;rsquo;. This is important mainly to manage URL&amp;rsquo;s as by default they have IP address.</description>
     </item>
     
     <item>
