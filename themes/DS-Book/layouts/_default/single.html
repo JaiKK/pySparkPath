@@ -18,7 +18,10 @@
 
             <div class="col-9">
                 <aside>
-                    {{ .TableOfContents }}
+                    {{if ne (.TableOfContents | countwords) 0}}
+                        <h3>Table of Contents</h3>
+                        {{ .TableOfContents }}
+                    {{end}}                    
                 </aside>
                 <Hr />
 

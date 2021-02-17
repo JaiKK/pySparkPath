@@ -119,3 +119,11 @@ Use below command to create are Docker image from Dockerfile. *Make sure downloa
 docker build -t jai/pyspark .
 
 ```
+
+> To start interactive bash shell
+
+```bash
+
+$> docker run -dit -p4040:4040 jai/pyspark bash
+
+```
